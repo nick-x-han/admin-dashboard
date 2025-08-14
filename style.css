@@ -19,7 +19,7 @@ body {
     min-height: 100vh;
     width: 100vw;
     grid-template-columns: 1fr 4fr;
-    grid-template-rows: 1fr 4fr;
+    grid-template-rows: 1fr 5fr;
     grid-template-areas:
         "sidebar header"
         "sidebar main";
@@ -48,21 +48,95 @@ body {
 
 .header {
     grid-area: header;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    padding: 0 2em;
 }
 
-.main-content {
-    grid-area: main;
-    background: var(--light-gray);
+.header-top {
+    display: grid;
+    grid-template-columns: [search] 6fr [bell] minmax(50px, 150px) [account] minmax(100px, 200px) [final];
+    align-items: center;
+    justify-items: center;
+}
+
+.header-top > img {
+    grid-column: bell;
+    justify-self: end;
+}
+
+.header-top-account {
+    grid-column: account / final;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+    gap: 1em;
+}
+
+.header-top-account > img {
+    width: 45px;
+    height: 45px;
+}
+
+.profile {
+    border-radius: 100%;
+    width: 60px;
+    height: 60px;
+}
+
+.header-search {
+    grid-column: search / bell;
+    display: grid;
+    align-items: center;
+    justify-self: stretch;
+    grid-template-columns: 45px 1fr;
+}
+
+.header-search > input {
+    border-radius: 16px;
+    border: none;
+    background-color: var(--light-gray);
+    height: 2em;
+}
+
+.header-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.greeting {
+    display: grid;
+    gap: 5%;
+    grid-template-columns: max-content 1fr;
+    justify-content: start;
+    align-items: center;
+}
+
+.small-greeting {
+    font-size: var(--small);
+}
+
+.large-greeting {
+    font-size: var(--large);
+}
+
+.header-buttons {
+    display: grid;
+    align-items: center;
+    justify-content: end;
+    grid-auto-flow: column;
+    gap: clamp(4px, 5%, 12px);
 }
 
 .header-button {
-    border-radius: 12px;
-    padding: 1em 2em;
+    border-radius: 25px;
+    padding: 0.5em 2em;
     background-color: var(--light-blue);
     color: white;
     font-size: var(--medium);
 }
 
-input[type="search"] {
-    border-radius: 8px;
+.main-content {
+    grid-area: main;
+    background: var(--light-gray);
 }
